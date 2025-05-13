@@ -2,6 +2,12 @@ import React from "react";
 
 import styled from "styled-components";
 
+const [ascproduct, setascproduct] = useState("");
+export const parmobj = {
+
+  _sort:  "release_year",
+  _order: ascproduct,
+};
 
 
 
@@ -38,8 +44,8 @@ export const Sidebar = () => {
       <br />
       <br />
       <h3>Sort By Release Year</h3>
-      <div>
-        <input data-testid="sort-asc" type="radio" name="sort" value={"asc"} />
+      <div onChange={(e) => setascproduct(e.target.value)}>
+        <input data-testid="sort-asc" type="radio" name="sort" value={"asc"} checked={ascproduct === "asc"} />
         <label>Ascending</label>
         <br />
         <input
@@ -47,6 +53,7 @@ export const Sidebar = () => {
           type="radio"
           name="sort"
           value={"desc"}
+          checked={ascproduct === "desc"}
         />
         <label>Descending</label>
       </div>

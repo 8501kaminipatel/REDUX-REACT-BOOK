@@ -1,13 +1,12 @@
 import axios from "axios";
 import { GET_DATA_ERRORS, GET_DATA_SUCCESS, PATCH_BOOK_FAILURE, PATCH_BOOK_REQUEST, PATCH_BOOK_SUCCESS } from "./actionTypes";
-import { useParams } from "react-router-dom";
 
 
 
 
-export const getBooks = () => (dispatch) => {
+export const getBooks = (paramObj) => (dispatch) => {
   // Write logic here
-  axios.get(' http://localhost:8080/books')
+  axios.get(' http://localhost:8080/books',{ params: paramObj })
     .then((res) => {
       console.log(res.data)
       dispatch({ type: GET_DATA_SUCCESS, payload: res.data })
